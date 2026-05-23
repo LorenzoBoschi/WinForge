@@ -10,6 +10,11 @@
 
 ---
 
+> ⚠️ **Important — before you run it**
+> If WinForge fails to launch (or the App Installer / `winget` step errors out immediately), **run Windows Update first** and install all pending updates, then reboot. WinForge depends on a recent `App Installer` (winget) and an up-to-date `.NET` stack, which a long-unpatched Windows installation may be missing.
+
+---
+
 ## Why this exists
 
 Every time you set up a new Windows PC for a colleague — or reinstall one after a wipe — you run the same 30-minute ritual. Hunt down the manufacturer's driver utility. Accept five EULAs. Install Chrome, install 7-Zip, install Acrobat. Set the default browser. Copy the serial number into a ticket. Find the public IP for the firewall guy. Repeat next week on a different PC.
@@ -194,6 +199,43 @@ Example:
 2026-05-23 14:31:12 Exit 1618 on Microsoft.VCRedist.2015+.x64, retry 1
 2026-05-23 14:31:55 winget Microsoft.VCRedist.2015+.x64 exit=0
 ```
+
+---
+
+## Troubleshooting
+
+### WinForge fails to launch, or closes immediately
+
+**This is almost always a Windows-Update issue.** WinForge relies on `winget` (App Installer) and a working .NET runtime stack — on a long-unpatched Windows installation, one or both can be missing or broken.
+
+**Fix:**
+
+1. Open `Settings → Windows Update`
+2. Click **Check for updates** and install everything pending (including optional and driver updates)
+3. **Reboot the PC**
+4. Re-launch `WinForge.bat`
+
+If the issue persists after a fully patched Windows:
+
+- Open the Microsoft Store, search for **App Installer**, and click **Update**
+- Verify `winget --version` from a regular PowerShell window returns a version
+- Check the log at `Desktop\WinForge_install_log.txt` for the last entry before the crash
+
+### "winget.exe not found" error dialog at startup
+
+The `App Installer` package isn't installed. Install it from the Microsoft Store ([direct link](https://apps.microsoft.com/detail/9NBLGGH4NNS1)) or via PowerShell:
+
+```powershell
+Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+```
+
+### SmartScreen warning on first run
+
+WinForge is not code-signed yet. On first launch, Windows SmartScreen may show "Windows protected your PC". Click **More info → Run anyway**. This is on the roadmap.
+
+### Some apps stay unchecked after "Check installed"
+
+The detection cross-references `winget list` output with hardcoded install paths. If you installed an app to a non-standard location, the path check fails. You can still tick the box manually — `winget` itself is idempotent and will recognise the existing install.
 
 ---
 
