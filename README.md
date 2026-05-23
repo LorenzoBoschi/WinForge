@@ -25,23 +25,30 @@ It's **vendor-aware** (Dell, HP and Lenovo each get a different driver flow), **
 
 ---
 
-## Screenshot
+## Screenshots
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ WinForge          │ DEVICE INFORMATION                          │
-│                   │ ┌─────────────────────────────────────────┐ │
-│ ▸ Device          │ │ Field        │ Value          │  [📋]  │ │
-│   Updates         │ │ Manufacturer │ Dell Inc.      │  [📋]  │ │
-│   Applications    │ │ Model        │ Latitude 5540  │  [📋]  │ │
-│   Common Apps     │ │ OS           │ Windows 11 Pro │  [📋]  │ │
-│                   │ │ CPU          │ Intel i7-1365U │  [📋]  │ │
-│                   │ │ RAM          │ 16 GB          │  [📋]  │ │
-│                   │ │ S/N          │ 7XK2J04        │  [📋]  │ │
-│                   │ │ Public IP    │ 87.12.xx.xx    │  [📋]  │ │
-│                   │ └─────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-```
+<table>
+<tr>
+<td width="50%">
+<img src="screenshots/01-device.png" alt="Device tab"/>
+<p align="center"><i>Device tab — hardware inventory with one-click clipboard copy</i></p>
+</td>
+<td width="50%">
+<img src="screenshots/02-update.png" alt="Updates tab"/>
+<p align="center"><i>Updates tab — Windows Update and vendor-aware driver flow</i></p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<img src="screenshots/03-apps.png" alt="Applications tab"/>
+<p align="center"><i>Applications tab — corporate baseline catalogue</i></p>
+</td>
+<td width="50%">
+<img src="screenshots/04-common-apps.png" alt="Common Apps tab"/>
+<p align="center"><i>Common Apps tab — extra software for end-user customisation</i></p>
+</td>
+</tr>
+</table>
 
 > The UI labels are currently in Italian. English localization is on the [roadmap](#roadmap).
 
@@ -247,7 +254,6 @@ The detection cross-references `winget list` output with hardcoded install paths
 - [ ] Code signing to avoid SmartScreen warnings
 - [ ] OEM bloatware removal module
 - [ ] Preset profiles (Office worker / Developer / Kiosk)
-- [ ] Replace ASCII screenshot with real PNGs
 
 ---
 
