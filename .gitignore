@@ -1,0 +1,40 @@
+# ===========================
+# WinForge - .gitignore
+# ===========================
+
+# Log generati dall'installer in fase di esecuzione
+*.log
+WinForge_install_log.txt
+
+# Cartella di staging usata dall'installer e poi auto-pulita
+C:/WinForge/
+/WinForge_tmp/
+
+# File temporanei creati durante i download (TeamViewer, DCU, .NET runtime)
+*.tmp
+TeamViewer_Setup*.exe
+Dell-Command-Update*.EXE
+windowsdesktop-runtime-*.exe
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# PowerShell
+*.ps1.bak
+*.psd1.bak
+PSScriptAnalyzerSettings.psd1.local
+
+# Eventuali screenshot di lavoro non ancora pubblicati
+screenshots/_drafts/
+*.tmp.png
